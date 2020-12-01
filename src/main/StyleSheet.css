@@ -2,3 +2,13 @@
    -fx-background-color: #252525;
    -fx-text-fill: white;
 }
+
+.layer {
+   -fx-background-color: #353535;
+   -fx-text-fill: white;
+}
+
+.layer2 {
+   -fx-background-color: #404040;
+   -fx-text-fill: white;
+}

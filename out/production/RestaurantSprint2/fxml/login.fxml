@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="720.0" prefWidth="1080.0" styleClass="background" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
+<BorderPane prefHeight="720.0" prefWidth="1080.0" styleClass="background" stylesheets="@../main/StyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
    <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" spacing="20.0" stylesheets="@StyleSheet.css" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" spacing="20.0" stylesheets="@../main/StyleSheet.css" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" prefHeight="15.0" prefWidth="108.0" styleClass="background" text="LOGIN" textAlignment="CENTER">
                <font>

@@ -38,4 +38,19 @@ public class Controller {
 
         else System.out.println("FAILED TO LOG IN");
     }
+
+    @FXML
+    private void onBtnLogoutConfirm(ActionEvent event) throws IOException {
+
+        AuthenticationManager.logOut();
+
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/login.fxml"));
+        Scene loginScene = new Scene(root, 1080, 720);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(loginScene);
+        window.show();
+
+        System.out.println("LOGGED OUT");
+    }
 }

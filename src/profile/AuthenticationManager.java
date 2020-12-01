@@ -21,4 +21,8 @@ public class AuthenticationManager {
 
         return false;
     }
+
+    public static void logOut () {
+        ActiveProfile.setActiveProfile(null);
+    }
 }
