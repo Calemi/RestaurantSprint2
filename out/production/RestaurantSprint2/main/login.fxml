@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="720.0" prefWidth="720.0" styleClass="background" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
+<BorderPane prefHeight="720.0" prefWidth="1080.0" styleClass="background" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" spacing="20.0" stylesheets="@StyleSheet.css" BorderPane.alignment="CENTER">
          <children>
@@ -15,7 +15,7 @@
                </font>
             </Label>
             <TextField fx:id="username" promptText="Profile Name" />
-            <TextField fx:id="password" prefHeight="25.0" prefWidth="210.0" promptText="Password" />
+            <PasswordField fx:id="password" promptText="Password" />
             <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#onBtnLoginConfirm" text="Confirm" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
@@ -26,7 +26,7 @@
             <Insets top="5.0" />
          </BorderPane.margin>
          <padding>
-            <Insets left="200.0" right="200.0" />
+            <Insets left="300.0" right="300.0" />
          </padding>
       </VBox>
    </center>

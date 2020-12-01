@@ -7,13 +7,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/login.fxml"));
+        Scene loginScreen = new Scene(root, 1080, 720);
         primaryStage.setTitle("Restaurant Application");
-        Scene scene = new Scene(root, 720, 720);
-        primaryStage.setScene(scene);
+        primaryStage.setScene(loginScreen);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
