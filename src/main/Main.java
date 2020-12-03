@@ -1,23 +1,38 @@
 package main;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+
+    private static Main instance;
+
+    private Stage stage;
+
+    public Main() {
+        instance = this;
+    }
+
+    public static Main getInstance() {
+        return instance;
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/login.fxml"));
-        Scene loginScreen = new Scene(root, 1080, 720);
+
+        stage = primaryStage;
+
         primaryStage.setTitle("Restaurant Application");
-        primaryStage.setScene(loginScreen);
         primaryStage.setResizable(false);
-        primaryStage.show();
+
+        Scenes.loadScene(Scenes.loginScene);
     }
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 }

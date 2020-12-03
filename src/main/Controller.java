@@ -2,18 +2,22 @@ package main;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.Group;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.scene.layout.GridPane;
+import profile.ActiveProfile;
 import profile.AuthenticationManager;
+import profile.Profile;
+import profile.WaitStaffProfile;
+import table.DiningRoom;
 
 import java.io.IOException;
 
 public class Controller {
+
+    public static Controller instance;
 
     @FXML
     private TextField username;
@@ -22,16 +26,25 @@ public class Controller {
     private PasswordField password;
 
     @FXML
+    public GridPane diningRoom;
+
+    @FXML
+    public Group panelParent;
+
+    @FXML
     private void onBtnLoginConfirm(ActionEvent event) throws IOException {
 
         if (AuthenticationManager.logIn(username.getText(), password.getText())) {
 
-            Parent root = FXMLLoader.load(getClass().getResource("../fxml/main.fxml"));
-            Scene mainScene = new Scene(root, 1080, 720);
+            Profile profile = ActiveProfile.getActiveProfile();
 
-            Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            window.setScene(mainScene);
-            window.show();
+            Scenes.loadScene(Scenes.mainScene);
+
+            if (profile instanceof WaitStaffProfile) {
+
+                WaitStaffProfile waitStaff = (WaitStaffProfile) profile;
+                DiningRoom.getInstance().assignTables(waitStaff);
+            }
 
             System.out.println("LOGGED IN");
         }
@@ -44,13 +57,28 @@ public class Controller {
 
         AuthenticationManager.logOut();
 
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/login.fxml"));
-        Scene loginScene = new Scene(root, 1080, 720);
-
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(loginScene);
-        window.show();
+        Scenes.loadScene(Scenes.loginScene);
 
         System.out.println("LOGGED OUT");
+    }
+
+    @FXML
+    private void onBtnTable(ActionEvent event) {
+
+        Button button = (Button) event.getSource();
+        int tableID = Integer.parseInt(button.getText()) - 1;
+
+        Profile profile = ActiveProfile.getActiveProfile();
+
+        if (profile instanceof WaitStaffProfile) {
+
+            WaitStaffProfile waitStaff = (WaitStaffProfile) profile;
+
+            if (waitStaff.isAssignedTable(tableID)) {
+                System.out.println("EDIT SCREEN");
+            }
+
+            else System.out.println("YOU CAN'T ACCESS THAT TABLE");
+        }
     }
 }
