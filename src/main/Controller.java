@@ -3,15 +3,17 @@ package main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import order.Food;
+import order.OrderQueue;
 import profile.ActiveProfile;
 import profile.AuthenticationManager;
 import profile.Profile;
 import profile.WaitStaffProfile;
+import table.ActiveTable;
 import table.DiningRoom;
+import table.Table;
 
 import java.io.IOException;
 
@@ -21,7 +23,6 @@ public class Controller {
 
     @FXML
     private TextField username;
-
     @FXML
     private PasswordField password;
 
@@ -29,7 +30,15 @@ public class Controller {
     public GridPane diningRoom;
 
     @FXML
+    private TextArea tabText;
+    @FXML
+    private Label tabTotal;
+
+    @FXML
     private Group panelParent;
+
+    @FXML
+    private GridPane foodBtnParent;
 
     public void setCurrentPanel(int id) {
 
@@ -95,20 +104,14 @@ public class Controller {
 
         Button button = (Button) event.getSource();
         int tableID = Integer.parseInt(button.getText()) - 1;
+        Table table = DiningRoom.getInstance().getTables()[tableID];
 
-        Profile profile = ActiveProfile.getActiveProfile();
+        if (table.getState() == Table.TableState.OCCUPIED) {
 
-        if (profile instanceof WaitStaffProfile) {
+            ActiveTable.setActiveTable(table);
+            updateTab();
 
-            WaitStaffProfile waitStaff = (WaitStaffProfile) profile;
-
-            if (waitStaff.isAssignedTable(tableID)) {
-                System.out.println("EDIT SCREEN");
-
-                setCurrentPanel(1);
-            }
-
-            else System.out.println("YOU CAN'T ACCESS THAT TABLE");
+            setCurrentPanel(1);
         }
     }
 
@@ -120,5 +123,43 @@ public class Controller {
     @FXML
     private void onBtnSelectCategory(ActionEvent event) {
         setCurrentPanel(3);
+
+        int buttonID = Integer.parseInt(((Button)event.getSource()).getId().replace("cat", ""));
+
+        for (int i = 0; i < instance.foodBtnParent.getChildren().size(); i++) {
+
+            if (instance.foodBtnParent.getChildren().get(i) instanceof Button) {
+
+                Button button = (Button) instance.foodBtnParent.getChildren().get(i);
+
+                button.setText(Food.fromCategory(buttonID).get(i).getName());
+            }
+        }
+    }
+
+    @FXML
+    private void onBtnAddFood(ActionEvent event) {
+
+        Button button = (Button)event.getSource();
+
+        Food food = Food.fromName(button.getText());
+
+        if (food != null) {
+
+            ActiveTable.getActiveTable().getTab().addToTab(food);
+            updateTab();
+
+            OrderQueue.getInstance().addToQueue(food);
+
+            setCurrentPanel(1);
+        }
+    }
+
+    public void updateTab() {
+
+        Table table = ActiveTable.getActiveTable();
+
+        tabText.setText(table.getTab().getTabString());
+        tabTotal.setText("Total: $" + String.format("%.2f", table.getTab().calculateTotal()));
     }
 }

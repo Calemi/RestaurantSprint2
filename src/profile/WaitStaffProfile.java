@@ -12,16 +12,4 @@ public class WaitStaffProfile extends Profile {
     public int[] getAssignedTables() {
         return assignedTables;
     }
-
-    public boolean isAssignedTable(int tableID) {
-
-        for (int i = 0; i < assignedTables.length; i++) {
-
-            if (assignedTables[i] == tableID) {
-                return true;
-            }
-        }
-
-        return false;
-    }
 }

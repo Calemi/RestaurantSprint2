@@ -262,7 +262,7 @@
                                 <Insets bottom="50.0" top="75.0" />
                             </padding>
                             <bottom>
-                                <Button mnemonicParsing="false" onAction="#onBtnAddOrder" text="Add Order" BorderPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#onBtnAddOrder" text="Add Item" BorderPane.alignment="CENTER">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font>
@@ -271,9 +271,21 @@
                             <opaqueInsets>
                                 <Insets left="50.0" right="50.0" />
                             </opaqueInsets>
-                            <center>
-                                <TextArea editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="350.0" prefWidth="250.0" wrapText="true" BorderPane.alignment="CENTER" />
-                            </center>
+                     <center>
+                        <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+                           <children>
+                                      <TextArea fx:id="tabText" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="320.0" prefWidth="250.0" wrapText="true" />
+                              <Label fx:id="tabTotal" alignment="CENTER" text="Total: $100" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <BorderPane.margin>
+                              <Insets left="310.0" right="310.0" />
+                           </BorderPane.margin>
+                        </VBox>
+                     </center>
                         </BorderPane>
                     </children>
                 </Group>
@@ -308,27 +320,27 @@
                                         <Insets bottom="50.0" left="200.0" right="200.0" top="40.0" />
                                     </BorderPane.margin>
                                     <children>
-                                        <Button mnemonicParsing="false" onAction="#onBtnSelectCategory" text="Burgers" textAlignment="CENTER">
+                                        <Button fx:id="cat0" mnemonicParsing="false" onAction="#onBtnSelectCategory" text="Burgers" textAlignment="CENTER">
                                             <font>
                                                 <Font name="System Bold" size="20.0" />
                                             </font>
                                         </Button>
-                                        <Button layoutX="128.0" layoutY="52.0" mnemonicParsing="false" onAction="#onBtnSelectCategory" text="Salads" textAlignment="CENTER" GridPane.columnIndex="1">
+                                        <Button fx:id="cat1" layoutX="128.0" layoutY="52.0" mnemonicParsing="false" onAction="#onBtnSelectCategory" text="Salads" textAlignment="CENTER" GridPane.columnIndex="1">
                                             <font>
                                                 <Font name="System Bold" size="20.0" />
                                             </font>
                                         </Button>
-                                        <Button layoutX="464.0" layoutY="52.0" mnemonicParsing="false" onAction="#onBtnSelectCategory" text="Soups" textAlignment="CENTER" GridPane.rowIndex="1">
+                                        <Button fx:id="cat2" layoutX="464.0" layoutY="52.0" mnemonicParsing="false" onAction="#onBtnSelectCategory" text="Soups" textAlignment="CENTER" GridPane.rowIndex="1">
                                             <font>
                                                 <Font name="System Bold" size="20.0" />
                                             </font>
                                         </Button>
-                                        <Button layoutX="128.0" layoutY="179.0" mnemonicParsing="false" onAction="#onBtnSelectCategory" text="Sides" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                        <Button fx:id="cat3" layoutX="128.0" layoutY="179.0" mnemonicParsing="false" onAction="#onBtnSelectCategory" text="Pizza" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <font>
                                                 <Font name="System Bold" size="20.0" />
                                             </font>
                                         </Button>
-                                        <Button layoutX="464.0" layoutY="179.0" mnemonicParsing="false" onAction="#onBtnSelectCategory" text="Drinks" textAlignment="CENTER" GridPane.rowIndex="2">
+                                        <Button fx:id="cat4" layoutX="464.0" layoutY="179.0" mnemonicParsing="false" onAction="#onBtnSelectCategory" text="Sides" textAlignment="CENTER" GridPane.rowIndex="2">
                                             <font>
                                                 <Font name="System Bold" size="20.0" />
                                             </font>
@@ -343,7 +355,7 @@
                     <children>
                         <BorderPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="872.0">
                             <top>
-                                <Label text="(Food Title)" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+                                <Label text="Food Options" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
                                     <font>
                                         <Font name="Segoe UI Semibold" size="52.0" />
                                     </font>
@@ -356,7 +368,7 @@
                                 <Insets left="50.0" right="50.0" />
                             </opaqueInsets>
                             <center>
-                                <GridPane BorderPane.alignment="CENTER">
+                                <GridPane fx:id="foodBtnParent" BorderPane.alignment="CENTER">
                                     <columnConstraints>
                                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -370,27 +382,22 @@
                                         <Insets bottom="50.0" left="200.0" right="200.0" top="40.0" />
                                     </BorderPane.margin>
                                     <children>
-                                        <Button mnemonicParsing="false" text="(option1)" textAlignment="CENTER">
+                                        <Button fx:id="food0" mnemonicParsing="false" onAction="#onBtnAddFood" text="(option1)" textAlignment="CENTER">
                                             <font>
                                                 <Font name="System Bold" size="20.0" />
                                             </font>
                                         </Button>
-                                        <Button layoutX="128.0" layoutY="52.0" mnemonicParsing="false" text="(option2)" textAlignment="CENTER" GridPane.columnIndex="1">
+                                        <Button fx:id="food1" layoutX="128.0" layoutY="52.0" mnemonicParsing="false" onAction="#onBtnAddFood" text="(option2)" textAlignment="CENTER" GridPane.columnIndex="1">
                                             <font>
                                                 <Font name="System Bold" size="20.0" />
                                             </font>
                                         </Button>
-                                        <Button layoutX="464.0" layoutY="52.0" mnemonicParsing="false" text="(option3)" textAlignment="CENTER" GridPane.rowIndex="1">
+                                        <Button fx:id="food2" layoutX="464.0" layoutY="52.0" mnemonicParsing="false" onAction="#onBtnAddFood" text="(option3)" textAlignment="CENTER" GridPane.rowIndex="1">
                                             <font>
                                                 <Font name="System Bold" size="20.0" />
                                             </font>
                                         </Button>
-                                        <Button layoutX="128.0" layoutY="179.0" mnemonicParsing="false" text="(option4)" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                            <font>
-                                                <Font name="System Bold" size="20.0" />
-                                            </font>
-                                        </Button>
-                                        <Button layoutX="464.0" layoutY="179.0" mnemonicParsing="false" text="(option5)" textAlignment="CENTER" GridPane.rowIndex="2">
+                                        <Button fx:id="food3" layoutX="128.0" layoutY="179.0" mnemonicParsing="false" onAction="#onBtnAddFood" text="(option4)" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <font>
                                                 <Font name="System Bold" size="20.0" />
                                             </font>

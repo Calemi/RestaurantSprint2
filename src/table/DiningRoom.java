@@ -2,6 +2,8 @@ package table;
 
 import profile.WaitStaffProfile;
 
+import java.util.Random;
+
 public class DiningRoom {
 
     private static DiningRoom instance = new DiningRoom();
@@ -17,15 +19,29 @@ public class DiningRoom {
         tables = new Table[30];
 
         for (int i = 0; i < tables.length; i++) {
-            tables[i] = new Table(i, Table.TableState.CLOSED);
+
+            tables[i] = new Table(i, Table.TableState.getRandomState(), new Tab());
         }
+    }
+
+    public Table[] getTables() {
+        return tables;
     }
 
     public void assignTables(WaitStaffProfile profile) {
 
-        for (int i = 0; i < profile.getAssignedTables().length; i++) {
+        for (int i = 0; i < tables.length; i++) {
 
-            tables[profile.getAssignedTables()[i]].setState(Table.TableState.OPEN);
+            boolean found = false;
+
+            for (int j = 0; j < profile.getAssignedTables().length; j++) {
+
+                if (i == profile.getAssignedTables()[j]) found = true;
+            }
+
+            if (!found) {
+                tables[i].setState(Table.TableState.CLOSED);
+            }
         }
     }
 }
