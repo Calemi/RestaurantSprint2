@@ -25,7 +25,7 @@ public class Main extends Application {
         primaryStage.setTitle("Restaurant Application");
         primaryStage.setResizable(false);
 
-        Scenes.loadScene(Scenes.loginScene);
+        Scenes.loadScene(Scenes.getLoginScene());
     }
 
     public static void main(String[] args) {

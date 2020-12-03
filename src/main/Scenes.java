@@ -8,9 +8,6 @@ import java.io.IOException;
 
 public class Scenes {
 
-    public static FXMLLoader loginScene = new FXMLLoader(Scenes.class.getResource("../fxml/login.fxml"));
-    public static FXMLLoader mainScene = new FXMLLoader(Scenes.class.getResource("../fxml/main.fxml"));
-
     public static void loadScene(FXMLLoader loader) throws IOException {
 
         Parent root = loader.load();
@@ -20,5 +17,13 @@ public class Scenes {
         Main.getInstance().getStage().setScene(scene);
         Main.getInstance().getStage().show();
         Controller.instance = loader.getController();
+    }
+
+    public static FXMLLoader getLoginScene() {
+        return new FXMLLoader(Scenes.class.getResource("../fxml/login.fxml"));
+    }
+
+    public static FXMLLoader getMainScene() {
+        return new FXMLLoader(Scenes.class.getResource("../fxml/main.fxml"));
     }
 }
