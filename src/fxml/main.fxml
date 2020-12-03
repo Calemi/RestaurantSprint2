@@ -274,7 +274,10 @@
                      <center>
                         <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
                            <children>
-                                      <TextArea fx:id="tabText" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="320.0" prefWidth="250.0" wrapText="true" />
+                                      <TextArea fx:id="tabText" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="320.0" prefWidth="250.0" text="\$12.00 - Pepperony Pizzaaaaa" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font></TextArea>
                               <Label fx:id="tabTotal" alignment="CENTER" text="Total: $100" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="Segoe UI Semibold" size="25.0" />

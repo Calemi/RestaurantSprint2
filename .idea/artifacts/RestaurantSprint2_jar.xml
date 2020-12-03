@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="RestaurantSprint2:jar">
-    <output-path>$PROJECT_DIR$/../../..</output-path>
+    <output-path>$USER_HOME$/Google Drive/School/Semester 6 (Fall 2020)/Intro to SWE/Sprint 2</output-path>
     <root id="archive" name="RestaurantSprint2.jar">
       <element id="module-output" name="RestaurantSprint2" />
       <element id="extracted-dir" path="$PATH_TO_FX$/src.zip" path-in-jar="/" />

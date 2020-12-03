@@ -20,10 +20,10 @@ public class Scenes {
     }
 
     public static FXMLLoader getLoginScene() {
-        return new FXMLLoader(Scenes.class.getResource("../fxml/login.fxml"));
+        return new FXMLLoader(Scenes.class.getResource("/fxml/login.fxml"));
     }
 
     public static FXMLLoader getMainScene() {
-        return new FXMLLoader(Scenes.class.getResource("../fxml/main.fxml"));
+        return new FXMLLoader(Scenes.class.getResource("/fxml/main.fxml"));
     }
 }
