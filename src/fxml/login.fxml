@@ -1,33 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <BorderPane prefHeight="720.0" prefWidth="1080.0" styleClass="background" stylesheets="@../main/StyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
    <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" spacing="20.0" stylesheets="@../main/StyleSheet.css" BorderPane.alignment="CENTER">
+      <Group BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" prefHeight="15.0" prefWidth="108.0" styleClass="background" text="LOGIN" textAlignment="CENTER">
-               <font>
-                  <Font name="Segoe UI Semibold" size="28.0" />
-               </font>
-            </Label>
-            <TextField fx:id="username" promptText="Profile Name" />
-            <PasswordField fx:id="password" promptText="Password" />
-            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#onBtnLoginConfirm" text="Confirm" textAlignment="CENTER">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
+            <VBox alignment="CENTER" prefHeight="300.0" prefWidth="500.0" spacing="20.0" styleClass="layer" stylesheets="@../main/StyleSheet.css">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" text="LOGIN" textAlignment="CENTER">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="28.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="background" />
+                        <String fx:value="layer" />
+                     </styleClass>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="25.0" prefWidth="300.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/user.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="username" prefHeight="25.0" prefWidth="266.0" promptText="Username" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="110.0" layoutY="105.0" prefHeight="25.0" prefWidth="300.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/password.png" />
+                           </image>
+                        </ImageView>
+                        <PasswordField fx:id="password" prefHeight="25.0" prefWidth="295.0" promptText="Password" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="loginError" alignment="CENTER" maxWidth="400.0" minWidth="300.0" prefHeight="25.0" prefWidth="300.0" textAlignment="CENTER" textFill="#ff3636">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#onBtnLoginConfirm" text="Confirm" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="100.0" right="100.0" />
+               </padding>
+            </VBox>
          </children>
-         <BorderPane.margin>
-            <Insets top="5.0" />
-         </BorderPane.margin>
-         <padding>
-            <Insets left="300.0" right="300.0" />
-         </padding>
-      </VBox>
+      </Group>
    </center>
 </BorderPane>

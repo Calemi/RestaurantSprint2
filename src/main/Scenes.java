@@ -6,8 +6,14 @@ import javafx.scene.Scene;
 
 import java.io.IOException;
 
+/**
+ * Used to switch scenes.
+ */
 public class Scenes {
 
+    /**
+     * Called to switch the scene.
+     */
     public static void loadScene(FXMLLoader loader) throws IOException {
 
         Parent root = loader.load();

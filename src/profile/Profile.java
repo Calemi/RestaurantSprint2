@@ -2,10 +2,13 @@ package profile;
 
 import java.util.Objects;
 
+/**
+ * The basic profile.
+ */
 public class Profile {
 
-    private String username;
-    private String password;
+    private final String username;
+    private final String password;
 
     public Profile(String username, String password) {
         this.username = username;
@@ -20,6 +23,9 @@ public class Profile {
         return password;
     }
 
+    /**
+     * Overrides the default equals method to only check the username and password.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

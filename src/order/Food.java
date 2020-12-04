@@ -3,6 +3,9 @@ package order;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Registers all food items.
+ */
 public enum Food {
 
     BURGER_CLASSIC      (0, "Classic Burger", 8.99F),
@@ -30,9 +33,9 @@ public enum Food {
     SIDE_OKRA           (4, "Fried Okra", 2.99F),
     SIDE_BEANS          (4, "Baked Beans", 3.99F);
 
-    private int categoryID;
-    private String name;
-    private float price;
+    private final int categoryID;
+    private final String name;
+    private final float price;
 
     Food (int categoryID, String name, float price) {
         this.categoryID = categoryID;
@@ -40,6 +43,9 @@ public enum Food {
         this.price = price;
     }
 
+    /**
+     * Used to get all food by it's category ID.
+     */
     public static List<Food> fromCategory(int categoryID) {
 
         List<Food> foods = new ArrayList<>();
@@ -54,6 +60,9 @@ public enum Food {
         return foods;
     }
 
+    /**
+     * Used to get a food by it's name.
+     */
     public static Food fromName(String name) {
 
         for (Food food : values()) {
@@ -64,11 +73,6 @@ public enum Food {
         }
 
         return null;
-    }
-
-
-    public int getCategoryID() {
-        return categoryID;
     }
 
     public String getName() {
